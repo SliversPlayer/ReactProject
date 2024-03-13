@@ -63,7 +63,8 @@ export const CarritoProvider = (props) => { //Forma de proveer el contexto, pued
 
     console.log(carrito)
     return (
-        <CarritoContext.Provider value={{ carrito, addItem, removeItem, updateItem, emptyCart, getItemQuantity, totalPrice }}>
+        <CarritoContext.Provider value={{ carrito, addItem, removeItem, updateItem, emptyCart,
+         getItemQuantity, totalPrice }}>
             {props.children}
 
         </CarritoContext.Provider>
