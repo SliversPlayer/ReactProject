@@ -183,12 +183,14 @@ export const getProducts = async() => {
     const items = productos.docs.map(prod => {return { ...prod.data(), id:prod.id}})
     return items
 }
+
 //CONSULTAR PRODUCTO
 export const getProduct = async(id) => {
     const producto = await getDoc(collection(bdd, "productos", id))
     const items = { ...producto.data(), id: producto.id}
     return item
 }
+
 //ACTUALIZAR PRODUCTO
 export const updateProduct = async (id,info) => {
     const respuesta = await updateDoc(doc(bdd,"productos", id), info)
@@ -200,7 +202,6 @@ export const deleteProduct = async (id) => {
     const respuesta = await deleteDoc(doc(bdd,"productos", id))
     return respuesta
 }
-
 
 //Crear y leer OC
 

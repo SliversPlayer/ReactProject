@@ -1,15 +1,44 @@
 import { useRef } from "react"
-
+import { useCarritoContext } from "../context/CartContext.jsx"
+import { Link, useNavigate } from "react-router-dom"
+import { createOrdenCompra, getOrdenCompra, updateProduct } from "../firebase/firebase.js"
 
 export const Checkout = () => {
     const formRef = useRef()
+    const navigate = useNavigate() 
+    const { carrito, totalPrice, emptyCart } = useCarritoContext()
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const datForm = new FormData(formRef.current) //Paso un formulario HTML a un objeto iterator
-        const data = Object.fromEntries(datForm) //Paso un objeto iterator a un objeto simple
-        console.log(data)
+        const datForm = new FormData(formRef.current)
+        const cliente = Object.fromEntries(datForm) 
+
+        //Generar la orden de compra
+        //Modificar Stock
+
+        const aux = [...carrito]
+
+        aux.forEach(prodCarrito => {
+            getProduct(prodCarrito.id).then(prodBDD =>{
+                if(prodBDD.stock >= prodCarrito.quantity) { // Verifica el stock, para realizar la compra
+                    prodBDD.stock -= prodCarrito.quantity
+                    updateProduct(prodBDD.id, prodBDD)
+                } else {
+                    console.log(`Producto ${prodBDD.title} no posee stock suficiente`)
+                    aux.filter(prod => prod.id != prodBDD.id)
+                }
+            })
+        })
+
+        const aux2 = aux.map(prod => ({id: prod.id, quantity: prod.quantity, price: prod.price }))
+
+        createOrdenCompra(cliente, totalPrice(), aux, new Date().toLocaleDateString('es-AR', {timeZone: Intl.DateTimeFormat()
+        .resolvedOptions().timeZone }))
+            .then(ordenCompra => console.log(`Gracias por su compra ${ordenCompra}`))
+
+        emptyCart()
         e.target.reset()
+        navigate('/')
     }
     return (
         <div className="max-w-md mx-auto p-6 mt-2 bg-gray-200 rounded-md shadow-md">

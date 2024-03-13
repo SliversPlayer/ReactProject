@@ -8,7 +8,7 @@ export const ItemDetail = ({ item }) => {
 
     const handleAddToCart = () => {
         addItem(item, count)
-/*        toast.success(`Producto agregado al carrito correctamente`, {
+        toast.success(`Producto agregado al carrito correctamente`, {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -18,15 +18,12 @@ export const ItemDetail = ({ item }) => {
             progress: undefined,
             theme: "dark"
         })
-*/
     }
     return (
 
-        
-
         <div className="bg-white p-8 rounded-lg max-w-md">
             <Link to={'/'}>
-                <button className="absolute top-4 right-4 text-slate-50 hover:text-gray-300">Cerrar</button>
+                <button className="absolute top-4 right-4 text-gray-700 hover:text-gray-900">Cerrar</button>
             </Link>
 
             <img className="w-full h-64 object-cover mb-6" src={`${item.img}`} alt={`Imagen de ${item.title}`} />

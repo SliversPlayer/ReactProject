@@ -29,22 +29,12 @@ export const CarritoProvider = (props) => { //Forma de proveer el contexto, pued
                 quantity: cantidad
             }
 
-            /*const aux = [...carrito]
-            aux.push(newItem)
-            setCarrito(aux)*/
-
             setCarrito([...carrito, newItem]) //Guardo en el carrito el nuevo producto
         }
     }
 
     //Eliminar producto
     const removeItem = (id) => {
-        /*const aux = [...carrito]
-        const indice = aux.findIndex(prod => prod.id === id)
-
-        if (indice != -1) {
-            setCarrito(aux.splice(indice, 1))
-        }*/
 
         setCarrito(carrito.filter(prod => prod.id !== id))
     }

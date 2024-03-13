@@ -17,7 +17,7 @@ export const App = () => {
     <BrowserRouter>
       <CarritoProvider>
         <Navbar />
-        <Hero />
+       
         <Routes>
           <Route path='/' element={<ItemListContainer />} />
           <Route path='/category/:cid' element={<ItemListContainer />} />

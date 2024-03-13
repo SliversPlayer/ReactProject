@@ -1,8 +1,8 @@
-/*import { useCarritoContext } from "../context/CartContext"*/
+import { useCarritoContext } from "../context/CartContext"
 import { useCounter } from '../hooks/useCounter.js'
 
 export const ItemCart = ({ product }) => {
-    /*const { updateItem } = useCarritoContext()*/
+    const { removeItem, updateItem } = useCarritoContext()
     const { count, increment, decrement } = useCounter(product.quantity, product.stock, 1)
     return (
         <div className="flex items-center p-4 border-gray-300">
