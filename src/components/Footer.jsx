@@ -8,7 +8,9 @@ export const Footer = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
                         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                     </svg>
-                    <span className="ml-3 text-xl text-white semi-bold">Autopia</span>
+                    <span className="ml-3 text-xl font-semibold text-fuchsia-500">Ter</span>
+                    <span className="ml-0 text-xl font-semibold text-purple-400">raF</span>
+                    <span className="ml-0 text-xl font-semibold text-cyan-400">lora</span>
                     </a>
                     {/*TEXTO*/}
                     <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-1">© 2024 RMS
